@@ -9,7 +9,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Project-specific imports
 import 'package:einfachkeiten_frontend/localization.dart';
-import 'package:einfachkeiten_frontend/src/core/components/einfachkeiten_icons.dart';
 import 'package:einfachkeiten_frontend/src/core/components/state_loading_widget.dart';
 import 'package:einfachkeiten_frontend/src/core/components/state_message_widget.dart';
 import 'package:einfachkeiten_frontend/src/core/theme/theme.dart';
@@ -119,6 +118,7 @@ class NewsPage extends StatelessWidget {
               mainAxisSpacing: AppSizes.PADDING_8,
               childAspectRatio: 0.8),
           children: state.news
+              .where((news) => news.visible)
               .map((news) => NewsWidget(news: news))
               .toList()
               .reversed
@@ -127,6 +127,7 @@ class NewsPage extends StatelessWidget {
       } else {
         return Column(
           children: state.news
+              .where((news) => news.visible)
               .map((news) => NewsWidget(news: news))
               .toList()
               .reversed
