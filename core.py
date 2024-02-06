@@ -12,7 +12,9 @@ logging.basicConfig(filename='log.log', level=logging.INFO, format='%(asctime)s 
 logging.getLogger().addHandler(logging.StreamHandler())
 
 # Load environment variables
-load_dotenv('config.env')
+# Assuming config.env is in the same directory as core.py
+dotenv_path = os.path.join(os.path.dirname(__file__), 'config.env')
+load_dotenv(dotenv_path)
 CMS_KEY = os.getenv('CMS_KEY')
 OPENAI_KEY = os.getenv('OPENAI_KEY')
 CMS_URL = 'https://api.thoxh.de/items/einfachkeiten'
@@ -169,8 +171,8 @@ def main():
             content_de = format_with_openai(text, "German", OPENAI_BASIC_INSTRUCTION_MESSAGE)
             content_en = format_with_openai(content_de, "English", OPENAI_TRANSLATE_INSTRUCTION_MESSAGE)
             
-            speech_file_de_path = text_to_speech_with_openai(content_de, "German")
-            speech_file_en_path = text_to_speech_with_openai(content_en, "English")
+            speech_file_de_path = text_to_speech_with_openai(title_de + "\n" + content_de, "German")
+            speech_file_en_path = text_to_speech_with_openai(title_en + "\n" + content_en, "English")
 
             speech_id_de = upload_file_to_cms(speech_file_de_path)
             speech_id_en = upload_file_to_cms(speech_file_en_path)
