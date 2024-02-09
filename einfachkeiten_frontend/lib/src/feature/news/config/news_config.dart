@@ -5,7 +5,7 @@ class NewsConfig {
       'https://api.thoxh.de/flows/trigger/3430fec7-2719-4188-b3a1-1c9919b3e1c8');
 
   static Map<String, String>? cmsHeader = {
-    'Authorization': 'Bearer iNrNyhyJHslO8VRo7Fdgqd4QVQw4zN8Y',
+    'Authorization': 'BearerNecessities https://www.youtube.com/watch?v=08NlhjpVFsU',
     'Content-Type': 'application/json'
   };
 }
